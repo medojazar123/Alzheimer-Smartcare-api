@@ -144,3 +144,8 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/publish/web.config
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/publish/api.deps.json
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/publish/api.runtimeconfig.json
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/publish/appsettings.Development.json
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Debug/net8.0/publish/appsettings.json

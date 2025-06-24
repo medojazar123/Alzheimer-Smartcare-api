@@ -108,6 +108,13 @@ namespace api.controllers
                     return BadRequest(new { message = "Scheduled time must be in the future" });
                 }
 
+                // Validate and parse Repeat type
+                if (!Enum.TryParse<ReminderRepeatType>(createDto.Repeat, true, out var repeatType))
+                {
+                    var validValues = string.Join(", ", Enum.GetNames<ReminderRepeatType>());
+                    return BadRequest(new { message = $"Invalid repeat value. Valid values are: {validValues}" });
+                }
+
                 var reminderModel = createDto.ToMedicineReminderFromCreateDto();
                 var createdReminder = await _reminderRepository.CreateAsync(reminderModel);
                 
