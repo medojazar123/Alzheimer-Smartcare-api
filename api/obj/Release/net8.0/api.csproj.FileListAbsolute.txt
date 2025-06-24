@@ -144,8 +144,3 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/obj/Release/net8.0/api.pdb
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/obj/Release/net8.0/api.genruntimeconfig.cache
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/obj/Release/net8.0/ref/api.dll
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Release/net8.0/publish/web.config
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Release/net8.0/publish/api.deps.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Release/net8.0/publish/api.runtimeconfig.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Release/net8.0/publish/appsettings.Development.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/bin/Release/net8.0/publish/appsettings.json

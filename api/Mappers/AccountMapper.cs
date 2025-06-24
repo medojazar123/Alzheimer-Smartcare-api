@@ -13,7 +13,7 @@ namespace api.Mappers
         {
             return new RegisterResponseDto
             {
-                Fullname = user.UserName,
+                Fullname = user.FullName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 UserType = user.UserType,

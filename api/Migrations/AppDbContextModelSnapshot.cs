@@ -50,19 +50,19 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8c4935e3-144c-4f7d-9f3d-3b89b5b5d91a",
+                            Id = "afb45224-0c94-4b60-93bf-b4e0807ad14d",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
-                            Id = "9a4264d9-591d-46af-8ff9-312c609cd7bb",
+                            Id = "0b6a1116-d715-466d-ae7e-a683cc9b6703",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
-                            Id = "f954865c-a91c-4fb5-8df9-9c32d26f2cf4",
+                            Id = "d8482ff9-9c61-4419-b2b4-1d673cf0b201",
                             Name = "Caregiver",
                             NormalizedName = "CAREGIVER"
                         });
@@ -193,6 +193,10 @@ namespace api.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -240,6 +244,31 @@ namespace api.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("api.models.FaceImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Base64Image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FaceImages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

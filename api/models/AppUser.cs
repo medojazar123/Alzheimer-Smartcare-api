@@ -12,5 +12,7 @@ namespace api.models
     {
     [Required]
     public string? UserType { get; set; }
+    [Required]
+    public string? FullName { get; set; }
     }
 }

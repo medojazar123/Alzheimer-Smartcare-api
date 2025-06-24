@@ -21,7 +21,9 @@ namespace PostgreSQL.Data
             // connect to postgres with connection string from app settings
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
         }
-        //public DbSet<Employee> Employees { get; set; }
+        public DbSet<FaceImage> FaceImages { get; set; }
+        public DbSet<MedicineReminder> MedicineReminders { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

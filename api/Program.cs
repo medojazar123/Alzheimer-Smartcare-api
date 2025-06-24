@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
+using api.interfaces;
 using api.Interfaces;
 using api.models;
+using api.Repository;
 using api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -42,12 +44,14 @@ builder.Services.AddSwaggerGen(option =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient();
+builder.Services.AddHostedService<ReminderNotificationService>();
 builder.Services.AddIdentity<AppUser, IdentityRole>(options => {
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
     options.Password.RequiredLength = 8;
-}).AddEntityFrameworkStores<AppDbContext>();
+}).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 builder.Services.AddAuthentication(options => 
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -70,6 +74,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddScoped<ITokenService,TokenService>();
+builder.Services.AddScoped<IFaceImageRepository,FaceImageRepository>();
+builder.Services.AddScoped<IRemindersRepository, RemindersRepository>();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddAuthorization();
@@ -89,3 +96,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//dotnet publish -c Release -o ./publish

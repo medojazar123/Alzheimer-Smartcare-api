@@ -1,11 +1,6 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/publish/web.config
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/appsettings.Development.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/appsettings.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/publish/api.deps.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/publish/api.runtimeconfig.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/publish/appsettings.Development.json
-/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/publish/appsettings.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.deps.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.runtimeconfig.json
