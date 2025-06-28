@@ -1,12 +1,16 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/appsettings.Development.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/appsettings.json
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/secrets/firebase-service-account.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.deps.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.runtimeconfig.json
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/api.pdb
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Azure.Core.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Azure.Identity.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Google.Apis.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Google.Apis.Auth.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Google.Apis.Core.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Humanizer.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -53,6 +57,7 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Configuration.ConfigurationManager.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Drawing.Common.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.IdentityModel.Tokens.Jwt.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Management.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Memory.Data.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Runtime.Caching.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/System.Security.Cryptography.ProtectedData.dll
@@ -119,6 +124,7 @@
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net6.0/System.Drawing.Common.dll
+/Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net7.0/System.Management.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/mohammedeljazar/Documents/GP/Alzheimer-Smartcare-api/api/publish/runtimes/win/lib/net6.0/System.Windows.Extensions.dll

@@ -23,8 +23,7 @@ namespace api.Services
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<ReminderNotificationService> _logger;
-        private readonly string _fcmServerKey;
-        private readonly string _fcmUrl = "https://fcm.googleapis.com/fcm/send";
+        private readonly string _serviceAccountPath;
         private readonly TimeSpan _checkInterval = TimeSpan.FromMinutes(1);
         private readonly TimeSpan _toleranceWindow = TimeSpan.FromMinutes(2);
 
@@ -37,7 +36,7 @@ namespace api.Services
             _scopeFactory = scopeFactory;
             _httpClientFactory = httpClientFactory;
             _logger = logger;
-            _fcmServerKey = config["Fcm:ServerKey"] ?? throw new ArgumentNullException("FCM Server Key not configured");
+            _serviceAccountPath = config["Firebase:ServiceAccountPath"] ?? throw new ArgumentNullException("Firebase service account path not configured");
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -257,47 +256,54 @@ namespace api.Services
         {
             try
             {
-                var client = _httpClientFactory.CreateClient();
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"key={_fcmServerKey}");
+                // Load service account credentials
+                var credential = Google.Apis.Auth.OAuth2.GoogleCredential
+                    .FromFile(_serviceAccountPath)
+                    .CreateScoped("https://www.googleapis.com/auth/firebase.messaging");
+
+                var accessToken = await credential.UnderlyingCredential.GetAccessTokenForRequestAsync();
+
+                var projectId = GetProjectIdFromServiceAccount(_serviceAccountPath);
+                var url = $"https://fcm.googleapis.com/v1/projects/{projectId}/messages:send";
 
                 var payload = new
                 {
-                    to = token,
-                    notification = new 
-                    { 
-                        title = title,
-                        body = body,
-                        sound = "default",
-                        badge = 1
-                    },
-                    data = new 
-                    { 
-                        type = "medicine_reminder",
-                        timestamp = DateTime.UtcNow.ToString("O"),
-                        priority = "high"
-                    },
-                    priority = "high",
-                    content_available = true
+                    message = new
+                    {
+                        token = token,
+                        notification = new
+                        {
+                            title = title,
+                            body = body
+                        },
+                        data = new
+                        {
+                            type = "medicine_reminder",
+                            timestamp = DateTime.UtcNow.ToString("O"),
+                            priority = "high"
+                        }
+                    }
                 };
 
                 var json = JsonConvert.SerializeObject(payload);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var client = _httpClientFactory.CreateClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                _logger.LogDebug("Sending FCM notification to token: {Token}", token[..Math.Min(token.Length, 10)] + "...");
+                _logger.LogDebug("Sending FCM v1 notification to token: {Token}", token[..Math.Min(token.Length, 10)] + "...");
 
-                var response = await client.PostAsync(_fcmUrl, content);
+                var response = await client.SendAsync(request);
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
-                    _logger.LogDebug("FCM notification sent successfully. Response: {Response}", responseContent);
+                    _logger.LogInformation("FCM v1 notification sent successfully. Response: {Response}", responseContent);
                     return true;
                 }
                 else
                 {
-                    _logger.LogWarning("FCM notification failed. Status: {Status}, Response: {Response}", 
-                        response.StatusCode, responseContent);
+                    _logger.LogWarning("FCM v1 failed. Status: {Status}, Response: {Response}", response.StatusCode, responseContent);
                     return false;
                 }
             }
@@ -311,6 +317,13 @@ namespace api.Services
                 _logger.LogError(ex, "Unexpected error sending FCM notification");
                 return false;
             }
+        }
+
+        private string GetProjectIdFromServiceAccount(string path)
+        {
+            var json = File.ReadAllText(path);
+            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            return data.ContainsKey("project_id") ? data["project_id"] : throw new Exception("project_id not found in service account JSON");
         }
     }
 }
